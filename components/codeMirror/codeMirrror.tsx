@@ -7,7 +7,7 @@ import { IDataContext } from "../context/interface/contextInterface";
 import { ICodeMirrorProperties } from "./interface/codemirror.interface";
 import { ITab } from "../../interface/children";
 import { ItemTab, Tab } from "../Tab";
-
+import Image from "next/image";
 //CodeMirrorDiv to see the div codemirror
 
 export const CodeMirrorDiv = (): JSX.Element => {
@@ -77,6 +77,7 @@ const CodeMirrorTab = ({ selected, setSelected }: ITab): JSX.Element => {
     <Tab>
       {context?.data.map((e: IDataContext) => (
         <ItemTab
+          key={e.lenguage}
           title={e.lenguage}
           select={selected}
           onClicked={() => {
@@ -104,7 +105,9 @@ export const CodeMirrorView = ({
 
   return (
     <div className="text-lg m-1">
-      <img
+      <Image
+        width={100}
+        height={100}
         className="fixed z-10 right-0 lg:right-1/2 mr-10 lg:-mr-2 lg:m-2 w-12 "
         src={`/icons/${lenguages}.svg`}
         alt={lenguages}
